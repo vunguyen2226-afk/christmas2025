@@ -29,6 +29,28 @@
         }
         /* ===== END PHOTO SECTION ===== */
 
+        /* ===== AUDIO SECTION ===== */
+        .audio-control {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            border: 2px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .audio-control:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
+        /* ===== END AUDIO SECTION ===== */
+
         .container {
             position: relative;
             width: 100vw;
@@ -437,6 +459,15 @@
 </head>
 <body>
     <div class="container">
+        <!-- ===== AUDIO - UPDATE THE src ATTRIBUTE WITH YOUR AUDIO FILE PATH ===== -->
+        <!-- Example: <audio id="bgMusic" src="your-song.mp3" loop></audio> -->
+        <!-- Supported formats: MP3, WAV, OGG -->
+        <audio id="bgMusic" loop>
+            <source src="jingle-bells-449466.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-control" id="audioToggle" title="Click to play/pause music">🔊</div>
+        <!-- ===== END AUDIO SECTION ===== -->
+
         <!-- ===== YOUR PHOTO - UPDATE THE src ATTRIBUTE WITH YOUR IMAGE PATH ===== -->
         <!-- Example: <img src="your-photo.jpg" class="center-photo" alt="Photo"> -->
         <!-- Or if in a subfolder: <img src="images/your-photo.jpg" class="center-photo" alt="Photo"> -->
@@ -467,6 +498,36 @@
     </div>
 
     <script>
+        // Audio control
+        const audio = document.getElementById('bgMusic');
+        const audioToggle = document.getElementById('audioToggle');
+        let isPlaying = false;
+
+        // Auto-play attempt (some browsers may block this)
+        window.addEventListener('load', () => {
+            audio.play().then(() => {
+                isPlaying = true;
+                audioToggle.textContent = '🔊';
+            }).catch(() => {
+                // Auto-play blocked, user needs to click
+                isPlaying = false;
+                audioToggle.textContent = '🔇';
+            });
+        });
+
+        // Toggle audio on click
+        audioToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                audioToggle.textContent = '🔇';
+                isPlaying = false;
+            } else {
+                audio.play();
+                audioToggle.textContent = '🔊';
+                isPlaying = true;
+            }
+        });
+
         // Create snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
