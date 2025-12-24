@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas 2025 - Thùy Dương</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a1128 0%, #1a2847 30%, #2d4263 60%, #3d5a80 100%);
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        /* Photo frame */
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8),
+                        0 0 50px rgba(255, 105, 180, 0.6),
+                        0 0 70px rgba(255, 20, 147, 0.4);
+            animation: photoGlow 3s ease-in-out infinite;
+            position: relative;
+            background: #fff;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 4em;
+        }
+
+        @keyframes photoGlow {
+            0%, 100% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.8),
+                            0 0 50px rgba(255, 105, 180, 0.6),
+                            0 0 70px rgba(255, 20, 147, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(255, 215, 0, 1),
+                            0 0 70px rgba(255, 105, 180, 0.9),
+                            0 0 100px rgba(255, 20, 147, 0.7);
+                transform: scale(1.05);
+            }
+        }
+
+        .greeting {
+            color: #fff;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+                         0 0 40px rgba(255, 105, 180, 0.6);
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            color: #ff69b4;
+            font-size: 3.5em;
+            font-weight: bold;
+            text-shadow: 0 0 25px rgba(255, 105, 180, 1),
+                         0 0 50px rgba(255, 20, 147, 0.8),
+                         0 0 75px rgba(255, 0, 255, 0.6);
+            animation: nameGlow 2.5s ease-in-out infinite;
+            margin: 20px 0;
+            letter-spacing: 3px;
+        }
+
+        .message {
+            color: #ffd700;
+            font-size: 1.4em;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            animation: fadeInOut 3s ease-in-out infinite;
+            margin: 15px 0;
+        }
+
+        .year {
+            color: #87ceeb;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(135, 206, 235, 0.8);
+            margin-top: 15px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .emoji-line {
+            font-size: 2.2em;
+            margin: 15px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+                             0 0 40px rgba(255, 105, 180, 0.6);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 1),
+                             0 0 60px rgba(255, 105, 180, 0.9),
+                             0 0 80px rgba(255, 69, 0, 0.7);
+            }
+        }
+
+        @keyframes nameGlow {
+            0%, 100% {
+                text-shadow: 0 0 25px rgba(255, 105, 180, 1),
+                             0 0 50px rgba(255, 20, 147, 0.8),
+                             0 0 75px rgba(255, 0, 255, 0.6);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 35px rgba(255, 105, 180, 1),
+                             0 0 70px rgba(255, 20, 147, 1),
+                             0 0 100px rgba(255, 0, 255, 0.8);
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Snowflakes */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1.5em;
+            animation: fall linear infinite;
+            opacity: 0.8;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Hearts */
+        .heart {
+            position: absolute;
+            color: #ff1493;
+            font-size: 2em;
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.7;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.9);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+                opacity: 1;
+            }
+        }
+
+        /* Stars */
+        .star {
+            position: absolute;
+            color: #ffd700;
+            font-size: 1.2em;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* Gift boxes */
+        .gift {
+            position: absolute;
+            font-size: 2em;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        /* Christmas tree */
+        .tree {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 5em;
+            animation: treeGrow 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.5));
+        }
+
+        @keyframes treeGrow {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.08); }
+        }
+
+        /* File input styling */
+        .upload-section {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .upload-btn:hover {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+        }
+
+        #fileInput {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-section">
+        <input type="file" id="fileInput" accept="image/*">
+        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+            📷 Upload Photo
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="photo-frame" id="photoFrame">
+            <div class="photo-placeholder">💖</div>
+        </div>
+        
+        <div class="greeting">🎄 Merry Christmas 🎄</div>
+        <div class="name">Thùy Dương</div>
+        <div class="emoji-line">💝 ✨ 🎁 ✨ 💝</div>
+        <div class="message">Wishing you joy, love, and magic</div>
+        <div class="message">this holiday season!</div>
+        <div class="year">2025</div>
+    </div>
+
+    <div class="tree">🎄</div>
+
+    <script>
+        // Photo upload functionality
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const photoFrame = document.getElementById('photoFrame');
+                    photoFrame.innerHTML = `<img src="${event.target.result}" alt="Thùy Dương">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Create snowflakes
+        for (let i = 0; i < 35; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            snowflake.style.fontSize = (Math.random() * 1 + 0.5) + 'em';
+            document.body.appendChild(snowflake);
+        }
+
+        // Create hearts
+        for (let i = 0; i < 10; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+        }
+
+        // Create stars
+        for (let i = 0; i < 20; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.innerHTML = '⭐';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 50 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(star);
+        }
+
+        // Create gift boxes
+        const gifts = ['🎁', '🎀', '🎊'];
+        for (let i = 0; i < 6; i++) {
+            const gift = document.createElement('div');
+            gift.className = 'gift';
+            gift.innerHTML = gifts[Math.floor(Math.random() * gifts.length)];
+            gift.style.left = Math.random() * 100 + '%';
+            gift.style.top = Math.random() * 100 + '%';
+            gift.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(gift);
+        }
+    </script>
+</body>
+</html>
