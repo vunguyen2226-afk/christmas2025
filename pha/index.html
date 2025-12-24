@@ -13,13 +13,26 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a472a 0%, #2d5016 50%, #8b0000 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="50">❄️</text></svg>') repeat;
+            opacity: 0.1;
+            pointer-events: none;
         }
 
         .container {
@@ -27,10 +40,11 @@
             border-radius: 30px;
             padding: 50px;
             max-width: 900px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(255, 215, 0, 0.3);
             text-align: center;
             position: relative;
             animation: fadeIn 1s ease-in;
+            border: 5px solid #c41e3a;
         }
 
         @keyframes fadeIn {
@@ -44,12 +58,52 @@
             }
         }
 
+        .christmas-lights {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 10;
+        }
+
+        .light {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        .light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
+        .light:nth-child(2) { background: #00ff00; animation-delay: 0.3s; }
+        .light:nth-child(3) { background: #0000ff; animation-delay: 0.6s; }
+        .light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
+        .light:nth-child(5) { background: #ff00ff; animation-delay: 1.2s; }
+        .light:nth-child(6) { background: #00ffff; animation-delay: 0.2s; }
+        .light:nth-child(7) { background: #ff8800; animation-delay: 0.5s; }
+        .light:nth-child(8) { background: #ff0088; animation-delay: 0.8s; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; box-shadow: 0 0 20px currentColor; }
+            50% { opacity: 0.3; box-shadow: 0 0 5px currentColor; }
+        }
+
         h1 {
-            color: #764ba2;
+            color: #c41e3a;
             font-size: 3em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            margin-top: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px #ffd700;
             animation: bounce 2s ease-in-out infinite;
+        }
+
+        .christmas-subtitle {
+            color: #0f6938;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-style: italic;
         }
 
         @keyframes bounce {
@@ -61,11 +115,66 @@
             }
         }
 
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 30px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid #c41e3a;
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.5), 0 0 50px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, #ffd700 0%, #c41e3a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo-frame::before {
+            content: '🎅';
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            font-size: 2em;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .cake-container {
             position: relative;
             margin: 40px auto;
             width: 300px;
             height: 350px;
+        }
+
+        .christmas-tree {
+            position: absolute;
+            left: -80px;
+            bottom: 100px;
+            font-size: 4em;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        .christmas-tree-right {
+            position: absolute;
+            right: -80px;
+            bottom: 100px;
+            font-size: 4em;
+            animation: sway 3s ease-in-out infinite;
+            animation-delay: 1.5s;
         }
 
         .cake {
@@ -75,9 +184,10 @@
             transform: translateX(-50%);
             width: 200px;
             height: 180px;
-            background: linear-gradient(to bottom, #ffb6c1 0%, #ff69b4 100%);
+            background: linear-gradient(to bottom, #c41e3a 0%, #8b0000 100%);
             border-radius: 20px 20px 0 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
         .cake::before {
@@ -88,7 +198,7 @@
             transform: translateX(-50%);
             width: 180px;
             height: 30px;
-            background: #ffd700;
+            background: #0f6938;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -102,8 +212,8 @@
             height: 140px;
             background: repeating-linear-gradient(
                 90deg,
-                #ff69b4 0px,
-                #ff69b4 15px,
+                #c41e3a 0px,
+                #c41e3a 15px,
                 #fff 15px,
                 #fff 30px
             );
@@ -121,6 +231,14 @@
             box-shadow: 0 -5px 10px rgba(255, 255, 255, 0.5);
         }
 
+        .holly {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+        }
+
         .candle-group {
             position: absolute;
             top: -120px;
@@ -133,16 +251,16 @@
         .candle {
             width: 12px;
             height: 60px;
-            background: linear-gradient(to bottom, #4169e1, #1e90ff);
+            background: linear-gradient(to bottom, #c41e3a, #8b0000);
             border-radius: 3px;
             position: relative;
             animation: sway 2s ease-in-out infinite;
         }
 
-        .candle:nth-child(2) { animation-delay: 0.2s; background: linear-gradient(to bottom, #ff1493, #ff69b4); }
-        .candle:nth-child(3) { animation-delay: 0.4s; background: linear-gradient(to bottom, #32cd32, #90ee90); }
-        .candle:nth-child(4) { animation-delay: 0.6s; background: linear-gradient(to bottom, #ffa500, #ffd700); }
-        .candle:nth-child(5) { animation-delay: 0.8s; background: linear-gradient(to bottom, #9370db, #ba55d3); }
+        .candle:nth-child(2) { animation-delay: 0.2s; background: linear-gradient(to bottom, #0f6938, #165a2e); }
+        .candle:nth-child(3) { animation-delay: 0.4s; background: linear-gradient(to bottom, #ffd700, #ffaa00); }
+        .candle:nth-child(4) { animation-delay: 0.6s; background: linear-gradient(to bottom, #c41e3a, #8b0000); }
+        .candle:nth-child(5) { animation-delay: 0.8s; background: linear-gradient(to bottom, #0f6938, #165a2e); }
 
         @keyframes sway {
             0%, 100% { transform: rotate(-2deg); }
@@ -207,14 +325,14 @@
             border-radius: 50%;
         }
 
-        .balloon-1 { background: #ff6b6b; top: 10%; left: 5%; animation: float1 6s ease-in-out infinite; }
-        .balloon-2 { background: #4ecdc4; top: 30%; left: 15%; animation: float2 7s ease-in-out infinite; }
-        .balloon-3 { background: #ffe66d; top: 50%; left: 10%; animation: float1 8s ease-in-out infinite; }
-        .balloon-4 { background: #95e1d3; top: 20%; right: 10%; animation: float2 6.5s ease-in-out infinite; }
-        .balloon-5 { background: #ff9ff3; top: 45%; right: 5%; animation: float1 7.5s ease-in-out infinite; }
-        .balloon-6 { background: #a8e6cf; top: 65%; left: 8%; animation: float2 6.8s ease-in-out infinite; }
-        .balloon-7 { background: #ffd3b6; top: 70%; right: 12%; animation: float1 7.2s ease-in-out infinite; }
-        .balloon-8 { background: #ffaaa5; top: 85%; left: 20%; animation: float2 6.3s ease-in-out infinite; }
+        .balloon-1 { background: #c41e3a; top: 10%; left: 5%; animation: float1 6s ease-in-out infinite; }
+        .balloon-2 { background: #0f6938; top: 30%; left: 15%; animation: float2 7s ease-in-out infinite; }
+        .balloon-3 { background: #ffd700; top: 50%; left: 10%; animation: float1 8s ease-in-out infinite; }
+        .balloon-4 { background: #c41e3a; top: 20%; right: 10%; animation: float2 6.5s ease-in-out infinite; }
+        .balloon-5 { background: #fff; top: 45%; right: 5%; animation: float1 7.5s ease-in-out infinite; }
+        .balloon-6 { background: #0f6938; top: 65%; left: 8%; animation: float2 6.8s ease-in-out infinite; }
+        .balloon-7 { background: #ffd700; top: 70%; right: 12%; animation: float1 7.2s ease-in-out infinite; }
+        .balloon-8 { background: #c41e3a; top: 85%; left: 20%; animation: float2 6.3s ease-in-out infinite; }
 
         @keyframes float1 {
             0%, 100% { transform: translateY(0) translateX(0) rotate(-5deg); }
@@ -226,19 +344,37 @@
             50% { transform: translateY(-25px) translateX(-15px) rotate(-5deg); }
         }
 
+        .snowflake {
+            position: fixed;
+            color: white;
+            font-size: 1.5em;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1000;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
         .music-section {
             margin: 40px 0;
             padding: 30px;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #0f6938 100%);
             border-radius: 20px;
             position: relative;
             z-index: 2;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .music-section h2 {
-            color: #764ba2;
+            color: #fff;
             margin-bottom: 20px;
             font-size: 1.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .lyrics {
@@ -249,7 +385,8 @@
             line-height: 1.8;
             color: #333;
             font-size: 1.1em;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ffd700;
         }
 
         .lyrics p {
@@ -257,7 +394,7 @@
         }
 
         button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #0f6938 100%);
             color: white;
             border: none;
             padding: 15px 40px;
@@ -266,12 +403,13 @@
             cursor: pointer;
             margin-top: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.5);
+            font-weight: bold;
         }
 
         button:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.7);
         }
 
         button:active {
@@ -296,13 +434,14 @@
 
         .sparkle {
             position: fixed;
-            width: 4px;
-            height: 4px;
+            width: 6px;
+            height: 6px;
             background: gold;
             border-radius: 50%;
             pointer-events: none;
             animation: sparkle 1.5s ease-out forwards;
             z-index: 999;
+            box-shadow: 0 0 10px gold;
         }
 
         @keyframes sparkle {
@@ -320,21 +459,23 @@
             }
         }
 
-        .photo-frame {
-            width: 200px;
-            height: 200px;
-            margin: 30px auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 8px solid #667eea;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            position: relative;
-            z-index: 2;
+        .santa {
+            position: fixed;
+            font-size: 3em;
+            pointer-events: none;
+            z-index: 999;
+            animation: santa-fly 15s linear infinite;
+        }
+
+        @keyframes santa-fly {
+            0% {
+                left: -100px;
+                top: 10%;
+            }
+            100% {
+                left: calc(100% + 100px);
+                top: 30%;
+            }
         }
     </style>
 </head>
@@ -350,14 +491,30 @@
         <div class="balloon balloon-8"></div>
     </div>
 
+    <div class="santa">🎅🦌</div>
+
     <div class="container">
-        <h1>🎉 Chúc Mừng Sinh Nhật Châu Pha! 🎂</h1>
+        <div class="christmas-lights">
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+        </div>
+
+        <h1>🎄 Chúc Mừng Sinh Nhật Châu Pha! 🎂</h1>
+        <div class="christmas-subtitle">✨ Merry Christmas & Happy Birthday! ✨</div>
         
         <div class="photo-frame">
-            🎈
+            <img src="chaupha.jpg" alt="Châu Pha">
         </div>
 
         <div class="cake-container">
+            <div class="christmas-tree">🎄</div>
+            <div class="christmas-tree-right">🎄</div>
             <div class="candle-group">
                 <div class="candle"><div class="flame"></div></div>
                 <div class="candle"><div class="flame"></div></div>
@@ -367,32 +524,23 @@
             </div>
             <div class="cake">
                 <div class="frosting"></div>
+                <div class="holly">🎄</div>
             </div>
         </div>
 
         <div class="music-section">
-            <h2>🎵 Bài Hát Sinh Nhật Dành Cho Bạn</h2>
+            <h2>🎵 Bài Hát Sinh Nhật Dành Cho Bạn 🎅</h2>
             <div class="lyrics">
-                <p><strong>Sinh nhật vui vẻ Châu Pha ơi,</strong></p>
-                <p>Tuổi mới an lành, hạnh phúc tươi.</p>
-                <p>Nụ cười rạng rỡ mãi không phai,</p>
-                <p>Ước mơ thành công, niềm vui dài.</p>
-                <br>
-                <p><strong>Chúc bạn sinh nhật thật vui vẻ,</strong></p>
-                <p>Mọi điều tốt lành đến bên bạn.</p>
-                <p>Tuổi mới nhiều niềm vui và yêu thương,</p>
-                <p>Châu Pha yêu quý, mãi rạng ngời!</p>
-                <br>
-                <p style="text-align: center; font-style: italic; color: #764ba2;">
-                    💝 Chúc bạn luôn xinh đẹp, khỏe mạnh và thành công! 💝
+                <p style="text-align: center; font-size: 1.3em; line-height: 2; color: #c41e3a; font-weight: bold; padding: 20px;">
+                    🎄✨ Chúc em Châu Pha một sinh nhật vui vẻ và một đêm Giáng Sinh an lành bên người thân ✨🎄
                 </p>
             </div>
-            <button onclick="playBirthdaySong()">🎵 Phát Nhạc Sinh Nhật</button>
+            <button onclick="playBirthdaySong()">🎵 Phát Nhạc Sinh Nhật 🎄</button>
         </div>
     </div>
 
     <script>
-        let audio = new Audio('happy-birthday-368842.mp3'); // Change this to your MP3 filename
+        let audio = new Audio('happy-birthday-368842.mp3');
         let isPlaying = false;
 
         // Create continuous sparkles
@@ -406,6 +554,11 @@
         setInterval(() => {
             createSingleConfetti();
         }, 150);
+
+        // Create snowflakes
+        setInterval(() => {
+            createSnowflake();
+        }, 300);
 
         function createSparkle() {
             const sparkle = document.createElement('div');
@@ -421,12 +574,26 @@
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
             confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            const colors = ['#c41e3a', '#0f6938', '#ffd700', '#fff'];
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
             confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
             confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
             document.body.appendChild(confetti);
             
             setTimeout(() => confetti.remove(), 4000);
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.fontSize = (Math.random() * 1.5 + 0.5) + 'em';
+            snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => snowflake.remove(), 7000);
         }
 
         function playBirthdaySong() {
@@ -457,9 +624,10 @@
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
                     confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    const colors = ['#c41e3a', '#0f6938', '#ffd700', '#fff'];
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
                     confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
                     document.body.appendChild(confetti);
                     
                     setTimeout(() => confetti.remove(), 3000);
