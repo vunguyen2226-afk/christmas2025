@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Châu Pha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid #667eea;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .music-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 20px;
+        }
+
+        .music-section h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .lyrics {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: left;
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .lyrics p {
+            margin: 10px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .balloons {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 65px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+            }
+        }
+
+        .balloon:nth-child(1) { left: 10%; background: #ff6b6b; animation-delay: 0s; }
+        .balloon:nth-child(2) { left: 30%; background: #4ecdc4; animation-delay: 1s; }
+        .balloon:nth-child(3) { left: 50%; background: #ffe66d; animation-delay: 2s; }
+        .balloon:nth-child(4) { left: 70%; background: #95e1d3; animation-delay: 3s; }
+        .balloon:nth-child(5) { left: 90%; background: #ff9ff3; animation-delay: 4s; }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confetti-fall 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="balloons">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+
+    <div class="container">
+        <h1>🎉 Chúc Mừng Sinh Nhật Châu Pha! 🎂</h1>
+        
+        <div class="photo-frame">
+            🎈
+        </div>
+
+        <div class="music-section">
+            <h2>🎵 Bài Hát Sinh Nhật Dành Cho Bạn</h2>
+            <div class="lyrics">
+                <p><strong>Sinh nhật vui vẻ Châu Pha ơi,</strong></p>
+                <p>Tuổi mới an lành, hạnh phúc tươi.</p>
+                <p>Nụ cười rạng rỡ mãi không phai,</p>
+                <p>Ước mơ thành công, niềm vui dài.</p>
+                <br>
+                <p><strong>Chúc bạn sinh nhật thật vui vẻ,</strong></p>
+                <p>Mọi điều tốt lành đến bên bạn.</p>
+                <p>Tuổi mới nhiều niềm vui và yêu thương,</p>
+                <p>Châu Pha yêu quý, mãi rạng ngời!</p>
+                <br>
+                <p style="text-align: center; font-style: italic; color: #764ba2;">
+                    💝 Chúc bạn luôn xinh đẹp, khỏe mạnh và thành công! 💝
+                </p>
+            </div>
+            <button onclick="playBirthdaySong()">🎵 Phát Nhạc Sinh Nhật</button>
+        </div>
+    </div>
+
+    <script>
+        let audioContext;
+        let isPlaying = false;
+
+        function playBirthdaySong() {
+            if (isPlaying) return;
+            
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            isPlaying = true;
+            
+            const notes = [
+                {freq: 262, duration: 0.5}, // C
+                {freq: 262, duration: 0.5}, // C
+                {freq: 294, duration: 1},   // D
+                {freq: 262, duration: 1},   // C
+                {freq: 349, duration: 1},   // F
+                {freq: 330, duration: 2},   // E
+                
+                {freq: 262, duration: 0.5}, // C
+                {freq: 262, duration: 0.5}, // C
+                {freq: 294, duration: 1},   // D
+                {freq: 262, duration: 1},   // C
+                {freq: 392, duration: 1},   // G
+                {freq: 349, duration: 2},   // F
+            ];
+            
+            let time = audioContext.currentTime;
+            
+            notes.forEach(note => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = note.freq;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, time);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, time + note.duration);
+                
+                oscillator.start(time);
+                oscillator.stop(time + note.duration);
+                
+                time += note.duration;
+            });
+            
+            setTimeout(() => {
+                isPlaying = false;
+            }, time * 1000);
+            
+            createConfetti();
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+    </script>
+</body>
+</html>
