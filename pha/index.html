@@ -392,7 +392,7 @@
     </div>
 
     <script>
-        let audioContext;
+        let audio = new Audio('happy-birthday-368842.mp3'); // Change this to your MP3 filename
         let isPlaying = false;
 
         // Create continuous sparkles
@@ -430,54 +430,25 @@
         }
 
         function playBirthdaySong() {
-            if (isPlaying) return;
+            if (isPlaying) {
+                audio.pause();
+                audio.currentTime = 0;
+                isPlaying = false;
+                return;
+            }
             
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            isPlaying = true;
-            
-            const notes = [
-                {freq: 262, duration: 0.5}, // C
-                {freq: 262, duration: 0.5}, // C
-                {freq: 294, duration: 1},   // D
-                {freq: 262, duration: 1},   // C
-                {freq: 349, duration: 1},   // F
-                {freq: 330, duration: 2},   // E
-                
-                {freq: 262, duration: 0.5}, // C
-                {freq: 262, duration: 0.5}, // C
-                {freq: 294, duration: 1},   // D
-                {freq: 262, duration: 1},   // C
-                {freq: 392, duration: 1},   // G
-                {freq: 349, duration: 2},   // F
-            ];
-            
-            let time = audioContext.currentTime;
-            
-            notes.forEach(note => {
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = note.freq;
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.3, time);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, time + note.duration);
-                
-                oscillator.start(time);
-                oscillator.stop(time + note.duration);
-                
-                time += note.duration;
+            audio.play().then(() => {
+                isPlaying = true;
+                createConfetti();
+                createMoreSparkles();
+            }).catch(error => {
+                console.error('Error playing audio:', error);
+                alert('Không thể phát nhạc. Vui lòng đảm bảo file "birthday-song.mp3" nằm cùng thư mục với file HTML này.');
             });
             
-            setTimeout(() => {
+            audio.onended = () => {
                 isPlaying = false;
-            }, time * 1000);
-            
-            createConfetti();
-            createMoreSparkles();
+            };
         }
 
         function createConfetti() {
