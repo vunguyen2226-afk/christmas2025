@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas & Happy New Year</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0a1628, #1a2f4f);
+            font-family: 'Georgia', serif;
+        }
+
+        /* ===== PHOTO SECTION - UPDATE YOUR IMAGE PATH HERE ===== */
+        .center-photo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 300px;
+            border: 5px solid #ffd700;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            object-fit: cover;
+            z-index: 5;
+        }
+        /* ===== END PHOTO SECTION ===== */
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Snowflakes */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Christmas Tree */
+        .tree {
+            position: absolute;
+            bottom: 50px;
+            left: 15%;
+            width: 0;
+            height: 0;
+        }
+
+        .tree-part {
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 100px solid #2d5f3f;
+            position: relative;
+            margin: -30px auto;
+        }
+
+        .tree-part:nth-child(2) {
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-bottom: 110px solid #3a7450;
+        }
+
+        .tree-part:nth-child(3) {
+            border-left: 90px solid transparent;
+            border-right: 90px solid transparent;
+            border-bottom: 120px solid #2d5f3f;
+        }
+
+        .trunk {
+            width: 30px;
+            height: 50px;
+            background: #5d4037;
+            margin: -20px auto 0;
+        }
+
+        .ornament {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: twinkle 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Star */
+        .star {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid gold;
+            animation: starGlow 2s ease-in-out infinite;
+        }
+
+        .star:after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: -15px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 25px solid gold;
+        }
+
+        @keyframes starGlow {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 5px gold); }
+            50% { filter: brightness(1.5) drop-shadow(0 0 15px gold); }
+        }
+
+        /* Text Container */
+        .text-container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .main-text {
+            font-size: 4em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,215,0,0.5);
+            margin: 0;
+            animation: fadeInScale 2s ease-out;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 30px;
+            border-radius: 10px;
+        }
+
+        .sub-text {
+            font-size: 2.5em;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 20px 0 0 0;
+            animation: fadeInScale 2s ease-out 0.5s backwards;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 30px;
+            border-radius: 10px;
+        }
+
+        .brand-text {
+            font-size: 2em;
+            color: #00ff88;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 15px rgba(0,255,136,0.6);
+            margin: 15px 0 0 0;
+            font-weight: bold;
+            animation: fadeInScale 2s ease-out 1s backwards, pulse 2s ease-in-out infinite 3s;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 30px;
+            border-radius: 10px;
+        }
+
+        .team-text {
+            font-size: 1.5em;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 15px 0 0 0;
+            font-style: italic;
+            animation: fadeInScale 2s ease-out 1.5s backwards;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 25px;
+            border-radius: 10px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: explode 1.5s ease-out infinite;
+        }
+
+        @keyframes explode {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--x), var(--y)) scale(0);
+            }
+        }
+
+        /* Gifts */
+        .gift {
+            position: absolute;
+            bottom: 50px;
+            right: 15%;
+            width: 60px;
+            height: 60px;
+            background: #c41e3a;
+            border: 3px solid #8b1425;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .gift:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -3px;
+            right: -3px;
+            height: 10px;
+            background: gold;
+            transform: translateY(-50%);
+        }
+
+        .gift:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -3px;
+            bottom: -3px;
+            width: 10px;
+            background: gold;
+            transform: translateX(-50%);
+        }
+
+        .bow {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            background: gold;
+            border-radius: 50% 50% 0 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Santa and Sleigh */
+        .santa-container {
+            position: absolute;
+            left: -300px;
+            z-index: 15;
+        }
+
+        @keyframes flyAcross {
+            0% { 
+                left: -300px;
+                opacity: 1;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% { 
+                left: 110%;
+                opacity: 0;
+            }
+        }
+
+        .sleigh {
+            position: relative;
+            width: 120px;
+            height: 40px;
+            background: #8b0000;
+            border-radius: 0 50px 50px 0;
+            border: 3px solid #660000;
+        }
+
+        .sleigh:before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10px;
+            width: 100px;
+            height: 15px;
+            background: #ffd700;
+            border-radius: 50%;
+        }
+
+        .sleigh:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: 20px;
+            width: 40px;
+            height: 30px;
+            background: #8b0000;
+            border-radius: 10px;
+            border: 2px solid #660000;
+        }
+
+        .santa {
+            position: absolute;
+            top: -35px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background: #ff0000;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .santa-head {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            background: #ffd7b5;
+            border-radius: 50%;
+        }
+
+        .santa-hat {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid #ff0000;
+        }
+
+        .santa-hat:after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: -10px;
+            width: 20px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .santa-hat:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .reindeer {
+            position: absolute;
+            left: -80px;
+            top: 5px;
+            width: 40px;
+            height: 30px;
+            background: #8b4513;
+            border-radius: 50%;
+            animation: bounce 0.5s ease-in-out infinite;
+        }
+
+        .reindeer:before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 5px;
+            width: 8px;
+            height: 15px;
+            background: #654321;
+            border-radius: 2px;
+            transform: rotate(-20deg);
+        }
+
+        .reindeer:after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: 5px;
+            width: 8px;
+            height: 15px;
+            background: #654321;
+            border-radius: 2px;
+            transform: rotate(20deg);
+        }
+
+        .reindeer-nose {
+            position: absolute;
+            top: 10px;
+            left: -8px;
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #ff0000; }
+            to { box-shadow: 0 0 20px #ff0000, 0 0 30px #ff6666; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ===== YOUR PHOTO - UPDATE THE src ATTRIBUTE WITH YOUR IMAGE PATH ===== -->
+        <!-- Example: <img src="your-photo.jpg" class="center-photo" alt="Photo"> -->
+        <!-- Or if in a subfolder: <img src="images/your-photo.jpg" class="center-photo" alt="Photo"> -->
+        <img src="your-photo.jpg" class="center-photo" alt="Center Photo">
+        <!-- ===== END PHOTO SECTION ===== -->
+
+        <!-- Christmas Tree -->
+        <div class="tree">
+            <div class="star"></div>
+            <div class="tree-part"></div>
+            <div class="tree-part"></div>
+            <div class="tree-part"></div>
+            <div class="trunk"></div>
+        </div>
+
+        <!-- Gift -->
+        <div class="gift">
+            <div class="bow"></div>
+        </div>
+
+        <!-- Main Text -->
+        <div class="text-container">
+            <h1 class="main-text">Merry Christmas</h1>
+            <h2 class="sub-text">& Happy New Year!</h2>
+            <h3 class="brand-text">Live Payments</h3>
+            <p class="team-text">From Technology Team</p>
+        </div>
+    </div>
+
+    <script>
+        // Create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 5 + 's';
+            snowflake.style.animationDelay = Math.random() * 2 + 's';
+            snowflake.style.fontSize = Math.random() * 1 + 0.5 + 'em';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => snowflake.remove(), 8000);
+        }
+
+        setInterval(createSnowflake, 200);
+
+        // Create ornaments on tree
+        const tree = document.querySelector('.tree');
+        const colors = ['#ff0000', '#ffd700', '#0066ff', '#ff69b4', '#00ff00'];
+        
+        for (let i = 0; i < 15; i++) {
+            const ornament = document.createElement('div');
+            ornament.classList.add('ornament');
+            ornament.style.background = colors[Math.floor(Math.random() * colors.length)];
+            ornament.style.left = Math.random() * 160 - 80 + 'px';
+            ornament.style.top = Math.random() * 250 + 20 + 'px';
+            ornament.style.animationDelay = Math.random() * 1.5 + 's';
+            tree.appendChild(ornament);
+        }
+
+        // Create fireworks
+        function createFirework() {
+            const colors = ['#ff0000', '#ffd700', '#00ff00', '#0066ff', '#ff00ff', '#ff69b4', '#00ffff', '#ff8800'];
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.5;
+
+            for (let i = 0; i < 40; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                
+                const angle = (Math.PI * 2 * i) / 40;
+                const velocity = 50 + Math.random() * 120;
+                firework.style.setProperty('--x', Math.cos(angle) * velocity + 'px');
+                firework.style.setProperty('--y', Math.sin(angle) * velocity + 'px');
+                firework.style.animationDelay = Math.random() * 0.3 + 's';
+                
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 2000);
+            }
+        }
+
+        // Create multiple fireworks at once
+        function createFireworkBurst() {
+            const burstCount = Math.floor(Math.random() * 2) + 2; // 2-3 fireworks at once
+            for (let i = 0; i < burstCount; i++) {
+                setTimeout(() => createFirework(), i * 200);
+            }
+        }
+
+        // Create Santa sleigh
+        function createSanta() {
+            const santaContainer = document.createElement('div');
+            santaContainer.classList.add('santa-container');
+            
+            // Random vertical position
+            const topPosition = Math.random() * 30 + 10; // Between 10% and 40%
+            santaContainer.style.top = topPosition + '%';
+            
+            // Random duration for varied speeds
+            const duration = Math.random() * 5 + 12; // Between 12-17 seconds
+            santaContainer.style.animation = `flyAcross ${duration}s linear`;
+            
+            santaContainer.innerHTML = `
+                <div class="reindeer">
+                    <div class="reindeer-nose"></div>
+                </div>
+                <div class="sleigh">
+                    <div class="santa">
+                        <div class="santa-head">
+                            <div class="santa-hat"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(santaContainer);
+            
+            // Remove after animation completes
+            setTimeout(() => santaContainer.remove(), duration * 1000);
+        }
+
+        // Create Santa at intervals
+        setInterval(createSanta, 8000); // Every 8 seconds
+        setTimeout(createSanta, 2000); // First one after 2 seconds
+        setTimeout(createSanta, 5000); // Second one after 5 seconds
+
+        setInterval(createFireworkBurst, 1500);
+        setTimeout(createFirework, 500);
+        setTimeout(createFirework, 800);
+    </script>
+</body>
+</html>
