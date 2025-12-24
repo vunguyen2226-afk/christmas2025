@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -259,34 +259,8 @@
             }
         }
 
-        /* File input styling */
+        /* File input styling - hidden */
         .upload-section {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .upload-btn {
-            background: linear-gradient(135deg, #ff69b4, #ff1493);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .upload-btn:hover {
-            background: linear-gradient(135deg, #ff1493, #ff69b4);
-        }
-
-        #fileInput {
             display: none;
         }
     </style>
@@ -304,54 +278,32 @@
             <div class="photo-placeholder">💖</div>
         </div>
         
-        <div class="greeting">🎄 Merry Christmas 🎄</div>
+        <div class="greeting">🎄 Chúc em một mùa Giáng Sinh 🎄</div>
         <div class="name">Thùy Dương</div>
         <div class="emoji-line">💝 ✨ 🎁 ✨ 💝</div>
-        <div class="message">Wishing you joy, love, and magic</div>
-        <div class="message">this holiday season!</div>
+        <div class="message">vui vẻ và ấm cúng bên gia đình</div>
         <div class="year">2025</div>
     </div>
 
     <div class="tree">🎄</div>
 
     <script>
-        // Load saved photo on page load
-        async function loadSavedPhoto() {
-            try {
-                const result = await window.storage.get('thuy-duong-photo');
-                if (result && result.value) {
-                    const photoFrame = document.getElementById('photoFrame');
-                    photoFrame.innerHTML = `<img src="${result.value}" alt="Thùy Dương">`;
-                }
-            } catch (error) {
-                console.log('No saved photo found');
+        // REPLACE THIS URL WITH HER PHOTO URL
+        const PHOTO_URL = 'YOUR_PHOTO_URL_HERE';
+        // You can use: 
+        // - A direct image URL (e.g., 'https://example.com/photo.jpg')
+        // - Or upload to imgur.com and paste the link here
+        
+        // Load photo
+        function loadPhoto() {
+            if (PHOTO_URL && PHOTO_URL !== 'YOUR_PHOTO_URL_HERE') {
+                const photoFrame = document.getElementById('photoFrame');
+                photoFrame.innerHTML = `<img src="${PHOTO_URL}" alt="Thùy Dương">`;
             }
         }
 
-        // Photo upload functionality with save
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = async function(event) {
-                    const photoData = event.target.result;
-                    const photoFrame = document.getElementById('photoFrame');
-                    photoFrame.innerHTML = `<img src="${photoData}" alt="Thùy Dương">`;
-                    
-                    // Save photo to storage
-                    try {
-                        await window.storage.set('thuy-duong-photo', photoData);
-                        console.log('Photo saved successfully!');
-                    } catch (error) {
-                        console.error('Error saving photo:', error);
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Load saved photo when page loads
-        loadSavedPhoto();
+        // Load photo when page loads
+        loadPhoto();
 
         // Create snowflakes
         for (let i = 0; i < 35; i++) {
