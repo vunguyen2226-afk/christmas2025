@@ -225,7 +225,7 @@
             75% { transform: rotate(-5deg); }
         }
 
-        /* Christmas tree */
+        /* Christmas trees */
         .tree {
             position: absolute;
             bottom: 30px;
@@ -236,9 +236,27 @@
             filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.5));
         }
 
+        .floating-tree {
+            position: absolute;
+            font-size: 3em;
+            animation: treeFloat 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.4));
+        }
+
         @keyframes treeGrow {
             0%, 100% { transform: translateX(-50%) scale(1); }
             50% { transform: translateX(-50%) scale(1.08); }
+        }
+
+        @keyframes treeFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg);
+                opacity: 1;
+            }
         }
 
         /* File input styling */
@@ -354,6 +372,18 @@
             gift.style.top = Math.random() * 100 + '%';
             gift.style.animationDelay = Math.random() * 3 + 's';
             document.body.appendChild(gift);
+        }
+
+        // Create floating Christmas trees
+        for (let i = 0; i < 8; i++) {
+            const tree = document.createElement('div');
+            tree.className = 'floating-tree';
+            tree.innerHTML = '🎄';
+            tree.style.left = Math.random() * 100 + '%';
+            tree.style.top = Math.random() * 100 + '%';
+            tree.style.animationDuration = (Math.random() * 2 + 4) + 's';
+            tree.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(tree);
         }
     </script>
 </body>
