@@ -263,6 +263,32 @@
         .upload-section {
             display: none;
         }
+
+        /* Music controls */
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-controls:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+        }
+
+        .music-btn {
+            font-size: 2em;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -272,6 +298,14 @@
             📷 Upload Photo
         </button>
     </div>
+
+    <div class="music-controls" onclick="toggleMusic()">
+        <button class="music-btn" id="musicBtn">🎵</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="jingle-bells-449466.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
         <div class="photo-frame" id="photoFrame">
@@ -299,6 +333,23 @@
             if (PHOTO_URL && PHOTO_URL !== 'YOUR_PHOTO_URL_HERE') {
                 const photoFrame = document.getElementById('photoFrame');
                 photoFrame.innerHTML = `<img src="${PHOTO_URL}" alt="Thùy Dương">`;
+            }
+        }
+
+        // Music controls
+        let isPlaying = false;
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = '🎵';
+                isPlaying = false;
+            } else {
+                music.play();
+                musicBtn.textContent = '🔊';
+                isPlaying = true;
             }
         }
 
