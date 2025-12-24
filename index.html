@@ -315,18 +315,43 @@
     <div class="tree">🎄</div>
 
     <script>
-        // Photo upload functionality
+        // Load saved photo on page load
+        async function loadSavedPhoto() {
+            try {
+                const result = await window.storage.get('thuy-duong-photo');
+                if (result && result.value) {
+                    const photoFrame = document.getElementById('photoFrame');
+                    photoFrame.innerHTML = `<img src="${result.value}" alt="Thùy Dương">`;
+                }
+            } catch (error) {
+                console.log('No saved photo found');
+            }
+        }
+
+        // Photo upload functionality with save
         document.getElementById('fileInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(event) {
+                reader.onload = async function(event) {
+                    const photoData = event.target.result;
                     const photoFrame = document.getElementById('photoFrame');
-                    photoFrame.innerHTML = `<img src="${event.target.result}" alt="Thùy Dương">`;
+                    photoFrame.innerHTML = `<img src="${photoData}" alt="Thùy Dương">`;
+                    
+                    // Save photo to storage
+                    try {
+                        await window.storage.set('thuy-duong-photo', photoData);
+                        console.log('Photo saved successfully!');
+                    } catch (error) {
+                        console.error('Error saving photo:', error);
+                    }
                 };
                 reader.readAsDataURL(file);
             }
         });
+
+        // Load saved photo when page loads
+        loadSavedPhoto();
 
         // Create snowflakes
         for (let i = 0; i < 35; i++) {
